@@ -29,11 +29,12 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "./"),
     port: 3000,
-    publicPath: "http://localhost:3000/",
+    publicPath: "http://localhost:3000/public/react",
     hotOnly: true,
+    hot: true,
   },
   plugins: [
-      new webpack.HotModuleReplacementPlugin()
+    //   new webpack.HotModuleReplacementPlugin()
     ],
-  
+  devtool: "cheap-source-map"
 }
