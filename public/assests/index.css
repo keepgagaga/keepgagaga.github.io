@@ -1,0 +1,16 @@
+.card-block {
+    display: flex;
+}
+.card {
+    width: 200px;
+    height: 200px;
+    background-color:antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin: 5px;
+}
+.card > a:link {
+    text-decoration: none;
+}

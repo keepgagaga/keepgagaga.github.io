@@ -4,11 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>saulzh</title>
+    <link rel="stylesheet" type="text/css" href="./public/assests/index.css">
 </head>
 <body>
-    发现我并不想写博客，搞了几次后都是不了了之，所以这个网站还是用来折腾比较好。
+    <div id="root"></div>
+<script>
+    let cardList = [{text: 'React Page', href: './public/index-react.html'}, {text: 'Native Canvas', href: ''}, {text: 'React Canvas', href: ''}, {text: 'React Ant V', href: ''},];
 
-    未来可能要做的事：混合vue、react 开发，canvas 尝试，threejs 尝试
-    <a href="./public/index-react.html">react page</a>
+    let root = document.getElementById('root');
+    let header = document.createElement('header');
+    let h3 = document.createElement('h3');
+    h3.innerText = '这个网站未来可能要做的事：混合vue、react 开发，canvas 尝试，threejs 尝试';
+    header.appendChild(h3);
+    root.appendChild(header);
+    let cardBlock = document.createElement('div');  
+    cardBlock.className = 'card-block';
+  
+    cardList.map(cardItem => {
+        let card = document.createElement('div');
+        let link = document.createElement('a');
+        card.className = 'card';
+        link.innerText = cardItem.text;
+        link.href = cardItem.href;
+        card.appendChild(link);
+        cardBlock.appendChild(card);
+    })
+
+    root.appendChild(cardBlock);
+
+</script>
 </body>
 </html>
