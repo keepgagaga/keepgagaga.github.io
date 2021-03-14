@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>saulzh</title>
+    <title>这个网站主要是我用来测试各种特性</title>
     <link rel="stylesheet" type="text/css" href="./public/assests/index.css">
 </head>
 <body>
     <div id="root"></div>
 <script>
-    let cardList = [{text: 'React Page', href: './public/index-react.html'}, {text: 'Native Canvas', href: ''}, {text: 'React Canvas', href: ''}, {text: 'React Ant V', href: ''},];
+    let cardList = [
+        {text: 'React Page', href: './public/index-react.html'}, 
+        {text: 'Native Canvas', href: './src/native/canvas.html'}, 
+        {text: 'Ant V', href: ''}, 
+        {text: 'CSS', href: './src/native/css.html'},
+        {text: 'three.js', href: './src/native/threejs.html'},
+        {text: 'PDF edit', href: './src/native/pdf.html'},
+        {text: 'p5.js', href: './src/native/p5js.html'},
+        {text: 'markdown blog', href: './src/native/blog.html'},
+    ];
 
     let root = document.getElementById('root');
     let header = document.createElement('header');
     let h3 = document.createElement('h3');
-    h3.innerText = '这个网站未来可能要做的事：混合vue、react 开发，canvas 尝试，threejs 尝试';
+    h3.innerText = 'Saulzh';
     header.appendChild(h3);
     root.appendChild(header);
     let cardBlock = document.createElement('div');  

@@ -1,13 +1,20 @@
 import React, { Component } from "react";
-import "./App.css";
-import Test from "./components/test";
+import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
+import "./styles/App.css";
+import Home from "./pages/home";
+import Antv from "./pages/antv";
 
 class App extends Component {
     render() {
         return (
             <div className="App"> 
-                <h1>hello react</h1>
-                <Test></Test>
+                <HashRouter>
+                    <Switch>
+                        <Route path="/home" component={Home} exact></Route>
+                        <Route path="/antv" component={Antv} exact></Route>
+                        <Route path="/" component={Home} exact></Route>
+                    </Switch>
+                </HashRouter>
             </div>
         );
     }
