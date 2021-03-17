@@ -64,7 +64,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "c0a8b8945bf5ab3ce31c";
+/******/ 	var hotCurrentHash = "82969c72ae881487e433";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -904,7 +904,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".App {\n    margin: 1rem;\n    font-family: Arial, Helvetica, sans-serif;\n}", ""]);
+exports.push([module.i, ".App {\r\n    margin: 1rem;\r\n    font-family: Arial, Helvetica, sans-serif;\r\n}", ""]);
 
 // exports
 
@@ -923,7 +923,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".center {\n    width: 100vw;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}", ""]);
+exports.push([module.i, ".center {\r\n    width: 100vw;\r\n    height: 100vh;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n}", ""]);
 
 // exports
 
