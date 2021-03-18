@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Route, Router, Switch } from 'react-router-dom';
+import { Link, Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import "../styles/login.css";
 import Signup from "./signup";
 
@@ -53,21 +53,21 @@ class Login extends Component {
     render() {
         return (
             <div className="center">
-                {/* <div>登录以继续使用本网站</div> */}
-                <input placeholder="please innput name" onChange={this.onNameChange}></input>
-                <input placeholder="please input password" onChange={this.onPassWordChange}></input>
-                <div style={{ width: 10 + 'vw' }}>
-                    <button onClick={this.onSubbmit}>登录</button>
-                </div>
                 <Router>
-                    <Link to="/signup"></Link>
+                    <Switch>
+                        <Route path="/login">
+                            <input placeholder="please innput name" onChange={this.onNameChange}></input>
+                            <input placeholder="please input password" onChange={this.onPassWordChange}></input>
+                            <div style={{ width: 10 + 'vw' }}>
+                                <button onClick={this.onSubbmit}>Login</button>
+                            </div>
+                            <Link to="/signup">Signup</Link>
+                        </Route>
+                        <Route path="/signup">
+                            <Signup></Signup>
+                        </Route>
+                    </Switch>
                 </Router>
-
-                <Switch>
-                    <Route path="/signup">
-                        <Signup></Signup>
-                    </Route>
-                </Switch>
             </div>
         )
     }
