@@ -17,13 +17,14 @@
         {text: 'three.js', href: './src/native/threejs.html'},
         {text: 'PDF edit', href: './src/native/pdf.html'},
         {text: 'p5.js', href: './src/native/p5js.html'},
-        {text: 'markdown blog', href: './src/native/blog.html'},
+        {text: 'markdown blog', href: './src/native/blog/blog.html'},
     ];
 
     let root = document.getElementById('root');
     let header = document.createElement('header');
     let h3 = document.createElement('h3');
-    h3.innerText = 'Saulzh';
+    h3.innerText = "Saulzh's test site ";
+    h3.className = 'title';
     header.appendChild(h3);
     root.appendChild(header);
     let cardBlock = document.createElement('div');  
@@ -42,6 +43,8 @@
     root.appendChild(cardBlock);
 
     console.log(localStorage, 'localstorage ------------>');
+
+    //纸质背景，风车，转速随着鼠标移动而改变
 
 </script>
 </body>
