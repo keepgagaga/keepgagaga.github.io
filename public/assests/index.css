@@ -1,16 +1,16 @@
 .card-block {
-    display: flex;
-    flex-wrap: wrap;
+   display: grid;
+   justify-content: space-evenly;
+   grid-template-columns: repeat(auto-fill, 200px);
+   grid-gap: 15px;
 }
 .card {
-    width: 200px;
+    /* width: 200px; */
     height: 200px;
     background-color:antiquewhite;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
-    margin: 5px;
     border: 10px solid transparent;
     border-image-slice: 10 10 10 10;
     border-image-source: repeating-linear-gradient(-45deg,#E25B79 0,#E25B79 15px, transparent 0px, transparent 30px, #4457A0 0, #4457A0 45px, transparent 0, transparent 60px);
@@ -19,7 +19,7 @@
     text-decoration: none;
 }
 .title {
-    width: 30vw;
+   
     font-size: 40px;
     color: transparent;
     background: linear-gradient(30deg, #228DFD 30%, #e0d311 60%, #F45749 90%);
