@@ -13,7 +13,7 @@
         {text: 'React Page', href: './public/index-react.html'}, 
         {text: 'Native Canvas', href: './src/native/canvas.html'}, 
         {text: 'Ant V', href: ''}, 
-        {text: 'CSS', href: './src/native/css.html'},
+        {text: 'CSS', href: './src/native/css/css.html'},
         {text: 'three.js', href: './src/native/threejs.html'},
         {text: 'PDF edit', href: './src/native/pdf.html'},
         {text: 'p5.js', href: './src/native/p5js.html'},
@@ -62,14 +62,37 @@
     //     })
     // });
 
-    function sleep(duration) {
-        return new Promise(function(resolve, reject) {
-            console.log('b');
-            setTimeout(resolve, duration);
-        })
+    // function sleep(duration) {
+    //     return new Promise(function(resolve, reject) {
+    //         console.log('b');
+    //         setTimeout(resolve, duration);
+    //     })
+    // }
+    // console.log('a');
+    // sleep(5000).then(() => console.log('c'));
+
+    function recordHttpLog() {
+        //监听 Ajax 状态
+        function ajaxEventTrigger(event) {
+            var ajaxEvent = new CustomEvent(event, {detail: this});
+            window.dispatchEvent(ajaxEvent);
+        }
+
+        var oldXHR = window.XMLHttpRequest;
+        function newXHR() {
+            var realXHR = new oldXHR();
+            realXHR.addEventListener('loadstart', function() {
+                ajaxEventTrigger.call(this, 'ajaxLoadStart');
+            }, false);
+            realXHR.addEventListener('loadEnd', function() {
+                ajaxEventTrigger.call(this, 'ajaxLoadEnd');
+            }, false);
+            return realXHR;
+        }
+
+
     }
-    console.log('a');
-    sleep(5000).then(() => console.log('c'));
+
 
 </script>
 </body>
