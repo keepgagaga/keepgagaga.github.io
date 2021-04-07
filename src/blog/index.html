@@ -18,6 +18,7 @@
     <script>
         let main = document.getElementById('main');
         let blogList = document.createElement('div');  
+        let blogItem = document.getElementById('blogItem');
 
         for (let item of blogRaw.keys()) {
             let itemContainer = document.createElement('div');
@@ -26,20 +27,13 @@
             link.innerText = item;
             link.href = `#/${item}`;
             itemContainer.appendChild(link);
+            itemContainer.addEventListener('click', function(e) {
+                blogItem.innerHTML = marked(blogRaw.get(item));
+            })
             blogList.appendChild(itemContainer);
         }
 
         main.appendChild(blogList);
-
-        blogItem = document.getElementById('blogItem');
-
-        window.addEventListener('hashchange', function(e) {
-            let hash = decodeURI(location.hash.substring(2));
-            console.log(hash, 'hash ---------------->');
-            blogItem.innerHTML = marked(blogRaw.get(hash));
-
-           
-        });
        
     </script>
 </body>
