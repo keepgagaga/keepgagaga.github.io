@@ -9,24 +9,37 @@
     <title>blog —— 使用 markedjs 在线解析 markdown 语法</title>
 </head>
 <body>
-    <div id="main"></div>
+    <div id="main">
+        
+    </div>
+    <div id="blogItem"></div>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="./blog-raw.js"></script>
     <script>
         let main = document.getElementById('main');
         let blogList = document.createElement('div');  
 
-        blogRaw.map(item => {
+        for (let item of blogRaw.keys()) {
             let itemContainer = document.createElement('div');
             let link = document.createElement('a');
             itemContainer.className = '';
-            link.innerText = item.title;
-            // link.href = cardItem.href;
+            link.innerText = item;
+            link.href = `#/${item}`;
             itemContainer.appendChild(link);
             blogList.appendChild(itemContainer);
-        }) 
+        }
 
         main.appendChild(blogList);
+
+        blogItem = document.getElementById('blogItem');
+
+        window.addEventListener('hashchange', function(e) {
+            let hash = decodeURI(location.hash.substring(2));
+            console.log(hash, 'hash ---------------->');
+            blogItem.innerHTML = marked(blogRaw.get(hash));
+
+           
+        });
        
     </script>
 </body>
