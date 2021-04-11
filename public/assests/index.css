@@ -27,7 +27,19 @@
     background-clip: text;
     -webkit-background-clip: text;
 }
-body {
-    /* background: linear-gradient(#228DFD, #F45749); */
-    /* background-size: 10px 100%; */
+body:active::after {
+   transform: translate(-50%, -100%);
+   opacity: 0.5;
+   transition: 0s;
+   left: -999px;
+}
+body::after {
+    content: '你好啊，欢迎来这里逛逛~';
+    position: fixed;
+    z-index: 999;
+    left: calc(var(--clientx, -999) * 1px);
+    top: calc(var(--clienty, -999) * 1px);
+    transform: translate(-50%, calc(-100% - 20px));
+    opacity: 0;
+    transition: transform .3s, opacity .5s;
 }
