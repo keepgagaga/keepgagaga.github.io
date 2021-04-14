@@ -19,7 +19,6 @@
     text-decoration: none;
 }
 .title {
-   
     font-size: 40px;
     color: transparent;
     background: linear-gradient(30deg, #228DFD 30%, #e0d311 60%, #F45749 90%);
@@ -42,4 +41,12 @@ body::after {
     transform: translate(-50%, calc(-100% - 20px));
     opacity: 0;
     transition: transform .3s, opacity .5s;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(70deg,rgb(100,200,155), rgb(200,120,155), rgb(200,220,255));
+}
+a:link {
+    color: rgb(200,120,155);
 }
