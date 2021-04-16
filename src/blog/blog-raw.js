@@ -62,6 +62,20 @@ let flutterBugOne =
 目前还不知道具体原因，先记录一下
 `
 
+let flutterBugTwo =
+`# flutter bug --->打包后的 app 某些页面只显示一层灰色
+
+打包后用来测试的 app 突然在点击某些页面时变成灰色，并且无法继续点击，只能杀掉 app
+
+后来查找到原因，是因为某些错误导致的，比如图片地址为空
+
+今天遇到的就是这种情况，设计不在，还缺了一张图，就空着了
+
+因为这类错误在 debug 模式下不影响使用，就没在意
+
+但是在 release 模式下就会触发页面变灰无法点击的问题，解决办法就是回到 debug 模式，把问题排查清楚再打包就行了
+`
+
 let flutterRecordOne = 
 `# flutter record ---> 如何做图片缓存
 
@@ -78,4 +92,5 @@ blogRaw.set('折腾的快乐', firstBlogContent);
 blogRaw.set('得之我幸，失之我命', doSomething);
 blogRaw.set('为自己写传记', record);
 blogRaw.set('flutter bug ---> 有时不显示图片', flutterBugOne);
+blogRaw.set('flutter bug ---> 打包后的 app 某些页面只显示一层灰色', flutterBugTwo);
 blogRaw.set('flutter record ---> 缓存图片', flutterRecordOne);
