@@ -50,6 +50,32 @@ let record =
 好在还不算晚，从现在开始没事多记录一下，也算是留下一些痕迹了，权当做给自己的晚年留点记忆
 `
 
+let flutterBugOne =
+`# flutter bug ---> 有时不显示图片
+
+今天往图片文件夹里丢了一张图片，照例 pub get 一下，然后引用，却奇怪地没有显示出来，也没有报错
+
+怀疑是地址写错了，仔细检查了很多遍发现没有错，又 restart 了一次，还是不显示
+
+最后只能重新 run 一遍整个项目，这时图片才显示出来，总算解决了
+
+目前还不知道具体原因，先记录一下
+`
+
+let flutterRecordOne = 
+`# flutter record ---> 如何做图片缓存
+
+网络请求的图片需要在请求完成后缓存下来留作下次使用，以减少请求次数，加快图片显示
+
+目前已知第三方库 cached_network_image 可以满足这个需求，但还有其他简单方法
+
+方法一是使用 SharedPreferences 将返回的图片二进制数据转换为 base64 保存在本地，使用的时候取出来就好
+
+方法二就是直接保存在本地文件中，使用时读取文件
+`
+
 blogRaw.set('折腾的快乐', firstBlogContent);
 blogRaw.set('得之我幸，失之我命', doSomething);
 blogRaw.set('为自己写传记', record);
+blogRaw.set('flutter bug ---> 有时不显示图片', flutterBugOne);
+blogRaw.set('flutter record ---> 缓存图片', flutterRecordOne);
