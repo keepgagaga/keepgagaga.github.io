@@ -88,9 +88,36 @@ let flutterRecordOne =
 方法二就是直接保存在本地文件中，使用时读取文件
 `
 
+let flutterRecordTwo = 
+`# flutter record ---> 既要又要往往是烦恼的根源
+
+做 app ，写网页，好不好做？
+
+说好做挺好做的，就去写嘛，哪有写不出的效果呢？
+
+可是有时候却很烦，为什么，因为现实的效果往往不是 demo 那么简单
+
+demo 很多只是需要某一个功能或效果
+
+而现实往往是既要这个也要那个
+
+当你要这个效果时，很快就能做出来
+
+当你要那个效果时，也很快就能做出来
+
+但当你既想要这个效果，同时还想要那个效果时
+
+就不是简单的 1 + 1 = 2 了
+
+困难度往往直线上升
+
+好在在下班前把长度不定的可拖动排序列表做完了，吐槽下，下周继续
+`
+
 blogRaw.set('折腾的快乐', firstBlogContent);
 blogRaw.set('得之我幸，失之我命', doSomething);
 blogRaw.set('为自己写传记', record);
 blogRaw.set('flutter bug ---> 有时不显示图片', flutterBugOne);
 blogRaw.set('flutter bug ---> 打包后的 app 某些页面只显示一层灰色', flutterBugTwo);
 blogRaw.set('flutter record ---> 缓存图片', flutterRecordOne);
+blogRaw.set('flutter record ---> 既要又要往往是烦恼的根源', flutterRecordTwo);
