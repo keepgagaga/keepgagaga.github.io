@@ -114,6 +114,26 @@ demo 很多只是需要某一个功能或效果
 好在在下班前把长度不定的可拖动排序列表做完了，吐槽下，下周继续
 `
 
+let flutterRecordThree = 
+` flutter record ---> flutter build web 打包后无法加载资源
+
+flutter 更新 2.0.0 后就立马尝试了下 web，打包后访问发现无法加载资源，导致一直白屏
+
+后来发现是 index.html 中有一行
+ 
+    <base href="/">
+
+导致的，将这一行注释掉就可以了
+
+然后在写这一篇的时候没给代码用代码块包起来，结果又查看时会自己跳到首页
+
+检查 URL 也没错，标题也没错啊，也有做转义，就是没想到这行代码的原因...
+
+搜索 MDN 发现 base 元素指定用于一个文档中包含的所有相对 URL 的根 URL
+
+我们上面那行代码的意思就是后面的所有路由都是相对于根路由的，就导致总是跳转到首页
+`
+
 blogRaw.set('折腾的快乐', firstBlogContent);
 blogRaw.set('得之我幸，失之我命', doSomething);
 blogRaw.set('为自己写传记', record);
@@ -121,3 +141,4 @@ blogRaw.set('flutter bug ---> 有时不显示图片', flutterBugOne);
 blogRaw.set('flutter bug ---> 打包后的 app 某些页面只显示一层灰色', flutterBugTwo);
 blogRaw.set('flutter record ---> 缓存图片', flutterRecordOne);
 blogRaw.set('flutter record ---> 既要又要往往是烦恼的根源', flutterRecordTwo);
+blogRaw.set('flutter record ---> flutter build web后无法加载资源', flutterRecordThree);
