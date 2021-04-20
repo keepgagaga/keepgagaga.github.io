@@ -134,11 +134,17 @@ flutter 更新 2.0.0 后就立马尝试了下 web，打包后访问发现无法�
 我们上面那行代码的意思就是后面的所有路由都是相对于根路由的，就导致总是跳转到首页
 `
 
+let limitedLife = 
+`# 最近感悟（20210420)
+
+`
+
 blogRaw.set('折腾的快乐', firstBlogContent);
 blogRaw.set('得之我幸，失之我命', doSomething);
 blogRaw.set('为自己写传记', record);
 blogRaw.set('flutter bug ---> 有时不显示图片', flutterBugOne);
 blogRaw.set('flutter bug ---> 打包后的 app 某些页面只显示一层灰色', flutterBugTwo);
-blogRaw.set('flutter record ---> 缓存图片', flutterRecordOne);
+// blogRaw.set('flutter record ---> 缓存图片', flutterRecordOne);
 blogRaw.set('flutter record ---> 既要又要往往是烦恼的根源', flutterRecordTwo);
 blogRaw.set('flutter record ---> flutter build web后无法加载资源', flutterRecordThree);
+blogRaw.set('最近感悟（20210420）', limitedLife);
