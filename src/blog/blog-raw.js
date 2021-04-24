@@ -138,6 +138,16 @@ flutter 更新 2.0.0 后就立马尝试了下 web，打包后访问发现无法�
 我们上面那行代码的意思就是后面的所有路由都是相对于根路由的，就导致总是跳转到首页
 `
 
+let flutterRecordFour = 
+`# ListView item 自动铺满屏幕宽度
+
+使用 ListView 做列表的时候会遇到一个问题，就是子项的宽度没法指定，会自适应屏幕宽度，导致一些效果没法实现
+
+可以使用 Align 组件包裹住子组件，这样给子组件设置的宽度就生效了
+
+另一种方式则是 ListView 和 Wrap 的组合， Wrap 负责自动换行组件，ListView 负责滚动
+`
+
 let javaScriptRecordOne = 
 `# 闭包
 
@@ -158,4 +168,5 @@ blogRaw.set('flutter bug ---> 打包后的 app 某些页面只显示一层灰色
 blogRaw.set('flutter record ---> 缓存图片', flutterRecordOne);
 blogRaw.set('flutter record ---> 既要又要往往是烦恼的根源', flutterRecordTwo);
 blogRaw.set('flutter record ---> flutter build web后无法加载资源', flutterRecordThree);
+blogRaw.set('flutter record ---> ListView item 自动铺满屏幕宽度', flutterRecordFour);
 blogRaw.set('javaScript record ---> 闭包', javaScriptRecordOne);
