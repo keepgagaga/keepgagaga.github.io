@@ -10,6 +10,10 @@ let firstBlogContent =
 而如果你实在不想花什么成本，也不想运营一个服务器，那么 GitHub Pages 服务则是首选，不需要任何成本和维护，只要你上传静态文件就行。
 
 而相比于博客模板，我还是更喜欢自己亲自来折腾，虽然限于审美的匮乏，经常把页面搞得很丑，但这种自己写作品的过程还是很爽的，就是享受折腾的快乐。
+
+这次博客页面直接不加修饰了，就用最基础的 HTML，反正博客的核心向来是内容，样式只是锦上添花的事情。
+
+目标是尽量一天更新一篇，逼着自己去输出内容，毕竟不逼着自己，永远不知道自己的极限。
 `
 
 let doSomething = 
@@ -160,13 +164,53 @@ let javaScriptRecordOne =
 那么闭包在一定程度上就是为了表达状态
 `
 
+let javaScriptRecordTwo = 
+`#箭头函数和普通函数的区别
+
+最直观的区别就是写法上了，箭头函数还是比普通函数更加简洁的，能少些几个字符也算是省了一些力气
+
+箭头函数会捕获其所在上下文的 this 值，作为自己的 this 值，定义的时候就确定并固定了
+
+箭头函数不能作为构造函数使用，也不能使用 new 关键字，因为箭头函数没有自己的 this， 它的 this 是继承了外层环境的 this
+
+且 this 指向永远不会改变，而作为构造函数的话 this 需要指向新创建的对象
+
+箭头函数没有自己的 arguments 
+
+call、apply、bind 并不会影响 this 的指向
+
+箭头函数没有 prototype
+
+箭头函数不能当作 Generator 函数，不能使用 yield 关键字
+`
+
+let javaScriptRecordThree = 
+`# var，let 和 const 的区别
+
+var 声明的变量存在变量提升，即变量可以在声明之前使用，但值为 undefined
+
+let 和 const 则没有这个问题
+
+var 不存在块级作用域，let 和 const 存在块级作用域
+
+var 允许变量重复声明，let 和 const 在同一作用域不允许重复声明变量
+
+const 声明一个只读的常量，其声明时就要赋值，不然会报错
+
+但如果声明的是一个对象，对象里的属性是可以变的，原因是 const 声明的对象只保存着对象的引用地址，只要地址不变，就不会出错
+
+我们如果想要声明一个绝对不可变的对象，可以使用 Object.freeze(obj) 冻结对象， 对于已经冻结的属性还是对象的，可以使用递归的方法全部冻结
+`
+
 blogRaw.set('折腾的快乐', firstBlogContent);
 blogRaw.set('得之我幸，失之我命', doSomething);
 blogRaw.set('为自己写传记', record);
-blogRaw.set('flutter bug ---> 有时不显示图片', flutterBugOne);
-blogRaw.set('flutter bug ---> 打包后的 app 某些页面只显示一层灰色', flutterBugTwo);
-blogRaw.set('flutter record ---> 缓存图片', flutterRecordOne);
-blogRaw.set('flutter record ---> 既要又要往往是烦恼的根源', flutterRecordTwo);
-blogRaw.set('flutter record ---> flutter build web后无法加载资源', flutterRecordThree);
-blogRaw.set('flutter record ---> ListView item 自动铺满屏幕宽度', flutterRecordFour);
-blogRaw.set('javaScript record ---> 闭包', javaScriptRecordOne);
+blogRaw.set('flutter ---> 有时不显示图片', flutterBugOne);
+blogRaw.set('flutter ---> 打包后的 app 某些页面只显示一层灰色', flutterBugTwo);
+blogRaw.set('flutter ---> 缓存图片', flutterRecordOne);
+blogRaw.set('flutter ---> 既要又要往往是烦恼的根源', flutterRecordTwo);
+blogRaw.set('flutter ---> flutter build web后无法加载资源', flutterRecordThree);
+blogRaw.set('flutter ---> ListView item 自动铺满屏幕宽度', flutterRecordFour);
+blogRaw.set('javaScript ---> 闭包', javaScriptRecordOne);
+blogRaw.set('javaScript ---> 箭头函数和普通函数的区别', javaScriptRecordTwo);
+blogRaw.set('javaScript ---> var， let 和 const 的区别', javaScriptRecordThree);
