@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
-       
+       <style>
+           #main {
+               display: flex;
+               flex-direction: column;
+               /* align-items: center; */
+           }
+       </style>
     </head>
     <title>blog —— 使用 markedjs 在线解析 markdown 语法</title>
 </head>
@@ -34,6 +40,21 @@
         }
 
         main.appendChild(blogList);
+
+        window.addEventListener('hashchange', (event) => {
+            console.log(event);
+            if (event.newURL.match('#/')) {
+                blogList.style.opacity = '0';
+                blogList.style.height = '0';
+                blogItem.style.opacity = '1';
+            } else {
+                blogList.style.opacity = '1';
+                blogList.style.removeProperty('height');
+                blogItem.style.opacity = '0';
+            }
+        });
+
+       
        
     </script>
 </body>

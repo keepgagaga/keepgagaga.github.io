@@ -119,7 +119,7 @@ demo 很多只是需要某一个功能或效果
 `
 
 let flutterRecordThree = 
-` flutter record ---> flutter build web 打包后无法加载资源
+`# flutter record ---> flutter build web 打包后无法加载资源
 
 flutter 更新 2.0.0 后就立马尝试了下 web，打包后访问发现无法加载资源，导致一直白屏
 
