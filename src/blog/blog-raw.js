@@ -202,6 +202,89 @@ const 声明一个只读的常量，其声明时就要赋值，不然会报错
 我们如果想要声明一个绝对不可变的对象，可以使用 Object.freeze(obj) 冻结对象， 对于已经冻结的属性还是对象的，可以使用递归的方法全部冻结
 `
 
+let javaScriptRecordFour = 
+`# 基本类型和引用类型的区别
+
+## 基本类型数据
+
++ 基本类型数据的值是不可变的，我们常用的对字符串和数字的方法都是带有返回值的，而不是改变原字符串或数字
+
++ 基本类型数据不可以添加属性和方法，虽然不会报错，但只是一瞬间转为了相应包装对象，操作完又转化为原基本类型数据，不会保存结果
+
++ 基本类型数据的赋值是简单赋值，基本类型数据的比较是值的比较
+
++ 基本类型数据是存放在栈区的
+
+## 引用类型
+
++ 引用类型数据的值是可以改变的，比如对象就可以通过修改对象属性值更改对象
+
++ 引用类型可以添加属性和方法
+
++ 引用类型的赋值是对象引用，即声明的变量标识符存储的只是对象的指针地址
+
++ 引用类型的比较是引用的比较
+
++ 引用类型是同时保存在栈区和堆区的，栈区保存变量标识符和指向堆内存的地址
+`
+
+let javaScriptRecordFive = 
+`# defer 和 async 的区别
+
+defer 表示脚本立即下载但延迟执行
+
+同时 defer 脚本还遵循浏览器按照脚本出现的先后顺序执行的规则，同是 defer 脚本，第一个还是比第二个先执行
+
+async 与 defer 类似，但多个 async 脚本并不按照它们的先后顺序执行
+
+指定 async 属性的目的是不让页面等待脚本下载和执行，从而异步加载其他内容，常用于互不依赖的脚本
+
+浏览器在构建 DOM 树的时候因为 JS 可能会修改 DOM 树的结构，所以节点是 JS 代码的话会停止当前 DOM 树的构建，直到 JS 加载并执行完毕才会继续 DOM 树的构建
+
+这里如果处理不当就会产生阻塞，造成白屏问题，而 defer 和 async 则可以一定程度上解决这个问题
+`
+
+let javaScriptRecordSix = 
+`# async await 对比 promise 的优缺点
+
+## async await 的优点
+
++ 真正做到了串行同步的写法，非常易于阅读理解，在处理复杂流程时，更能体现出它的优势
+
++ 对于条件语句和其他流程语句比较友好，可以直接写在判断条件里面
+
+## async await 的缺点
+
++ 无法处理 promise 返回的 reject 对象，要借助 try ... catch ...
+
++ 用 await 可能会导致性能问题，因为 await 会阻塞代码，也许之后的异步代码并不依赖于前者，但仍然需要等待前者完成，导致代码丧失了并发性
+
++ try catch 内部的变量无法传递给下一个 try catch，而 promise 的 then 和 catch 内部定义的变量能通过 then 链条的参数传递给下一个 then 和 catch，
+但是 async 和 await 的 try 内部的变量，如果用 let 或 const 定义则无法传递给下一个 try catch，只能在外层作用域先定义好
+
+## promise 的缺点
+
++ 一旦执行，无法中途取消，链式调用多个 then 中间不能随便跳出来
+
++ 错误无法在外部捕获到，只能在内部进行预判处理，如果不设置回调函数，promise 内部抛出的错误不会反应到外部
+
++ promise 内部如何执行检测起来很难，当处于 pending 状态时，无法得知目前进展到哪一个阶段
+`
+
+let javaScriptRecordSeven = 
+`# get、post 漫谈
+
+get 请求将参数放在 URL 中进行传递，post 请求则主要将参数放在 body 中进行传递，参数不会像 get 请求那样显示在 URL 中，所以在安全性上 post 要更好
+
+get 请求提交的数据有长度限制，HTTP 本身没有做限制，主要是浏览器自身做的限制
+
+post 请求提交的数据没有长度限制
+
+get 请求返回的内容会被浏览器缓存起来，而 post 请求则没有这个待遇，也因为这个原因，更推荐使用 post 进行处理敏感数据
+
+我们常用 get 进行数据读取，用 post 进行增删改，但更好的方法是使用 put 进行改，使用 delete 进行删除，这样更符合语义
+`
+
 blogRaw.set('折腾的快乐', firstBlogContent);
 blogRaw.set('得之我幸，失之我命', doSomething);
 blogRaw.set('为自己写传记', record);
@@ -214,3 +297,7 @@ blogRaw.set('flutter ---> ListView item 自动铺满屏幕宽度', flutterRecord
 blogRaw.set('javaScript ---> 闭包', javaScriptRecordOne);
 blogRaw.set('javaScript ---> 箭头函数和普通函数的区别', javaScriptRecordTwo);
 blogRaw.set('javaScript ---> var， let 和 const 的区别', javaScriptRecordThree);
+blogRaw.set('javaScript ---> 基本类型和引用类型的区别', javaScriptRecordFour);
+blogRaw.set('javaScript ---> defer 和 async 的区别', javaScriptRecordFive);
+blogRaw.set('javaScript ---> async await 对比 promise 的优缺点', javaScriptRecordSix);
+blogRaw.set('javaScript ---> get、post 漫谈', javaScriptRecordSeven);
