@@ -285,6 +285,76 @@ get 请求返回的内容会被浏览器缓存起来，而 post 请求则没有�
 我们常用 get 进行数据读取，用 post 进行增删改，但更好的方法是使用 put 进行改，使用 delete 进行删除，这样更符合语义
 `
 
+let javaScriptRecordEight = 
+`# react、vue 对比
+
+react 自身的特色是极致的组件化，包括整个 react 生态也是如此，react 并没有做一系列的工具然后打包给大家使用，而是选择让社区共同合作，开发出一些低耦合的工具组合起来形成一个生态
+
+vue 提供的则是管家式的服务，整个生态中相对核心的工具我都给你造好，组合好，你拿来用就行了，不用操心太多事情
+`
+
+let javaScriptRecordNine = 
+`# cookie、session
+
+cookie 保存在客户端，session 保存在服务端
+
+单个 cookie 保存的数据 <= 4KB，一个站点最多保存20个cookie，而session则没有上限
+
+cookie 只能保存 unicode 字符串或二进制数据，而 session 则能保存任意类型数据
+
+cookie 对客户端是可见的，有一定安全风险，而session保存在服务器上，对客户端是透明的，风险较低
+
+cookie 可以通过设置属性使得 cookie 长期有效，而 session 关闭窗口就会失效
+`
+
+let javaScriptRecordTen = 
+`# 宏观任务和微观任务
+
+宿主发起的任务称为宏观任务，JS 引擎发起的任务称为微观任务
+
+setTimeOut 等宿主 API 添加宏观任务， Promise 添加微观任务
+
+每个宏观任务中包含一个微观任务队列
+
+因此在混用 setTimeOut 和 Promise 时，Promise 的代码永远比 setTimeOut 先执行
+`
+
+let javaScriptRecordEleven = 
+`# AJAX、axios、fetch
+
+AJAX 是 Asynchronous JavaScript and XML 的缩写，核心是使用 XMLHttpRequest 对象，只能使用回调函数的方式来使用
+
+axios 是一个基于 Promise 的用于浏览器和 node 端的 HTTP 客户端，本质上是对原生 XMLHttpRequest 的封装，只不过是基于 Promise 的版本
+
+fetch 被称为下一代 AJAX 技术，采用 Promise 方式来处理数据，是一种简洁明了的 API，比 XMLHttpRequest 更加简洁易用
+`
+
+let javaScriptRecordTwelve = 
+`
+`
+
+let javaScriptRecordThirteen = 
+`# bind、call、apply
+
+三者都可以改变函数的 this 对象指向
+
+三者的第一个参数都是 this 要指向的对象，如果没有这个参数或参数为 undefined 或 null，则默认指向全局 window
+
+三者都可以传参，但 apply 是传数组，而 call 是传参数列表，且 apply 和 call 是一次性传入参数，而 bind 可以多次传入
+
+bind 改变 this 指向后不会立即执行，而是返回一个永久改变 this 指向的函数便于稍后调用
+
+apply 和 call 则是立即调用
+`
+
+let devEnvOne = 
+`# 命令行访问 GitHub 出现超时或 SSL 证书问题
+
+网页可以正常访问 GitHub，但 pull or push 仓库时常出现 443 和 SSL_ERROR 的错误
+
+解决方法是在 DNS 设置里加上 114.114.114.114 和 8.8.8.8 即可解决
+`
+
 blogRaw.set('折腾的快乐', firstBlogContent);
 blogRaw.set('得之我幸，失之我命', doSomething);
 blogRaw.set('为自己写传记', record);
@@ -301,3 +371,11 @@ blogRaw.set('javaScript ---> 基本类型和引用类型的区别', javaScriptRe
 blogRaw.set('javaScript ---> defer 和 async 的区别', javaScriptRecordFive);
 blogRaw.set('javaScript ---> async await 对比 promise 的优缺点', javaScriptRecordSix);
 blogRaw.set('javaScript ---> get、post 漫谈', javaScriptRecordSeven);
+blogRaw.set('javaScript ---> react 和 vue 对比', javaScriptRecordEight);
+blogRaw.set('javaScript ---> cookie、session，cookie、sessionStorage、localStorage', javaScriptRecordNine);
+blogRaw.set('javaScript ---> 宏观任务和微观任务', javaScriptRecordTen);
+blogRaw.set('javaScript ---> AJAX、axios、fetch', javaScriptRecordEleven);
+// blogRaw.set('javaScript ---> 堆、栈和队列', javaScriptRecordTwelve);
+blogRaw.set('javaScript ---> bind、call、apply', javaScriptRecordThirteen);
+blogRaw.set('javaScript ---> typeScript 概述', javaScriptRecordFourteen);
+blogRaw.set('devEnv ---> 命令行访问 GitHub 出现超时或 SSL 证书问题', devEnvOne);
