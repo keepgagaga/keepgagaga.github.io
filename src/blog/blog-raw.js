@@ -54,6 +54,12 @@ let record =
 好在还不算晚，从现在开始没事多记录一下，也算是留下一些痕迹了，权当做给自己的晚年留点记忆
 `
 
+let recordTwo = 
+`# 老鹤高飞，一枝投宿，长笑蜗牛戴屋行
+
+今天看到这样一句话，觉得特别好，值得记录下来
+`
+
 let flutterBugOne =
 `# flutter bug ---> 有时不显示图片
 
@@ -291,6 +297,11 @@ let javaScriptRecordEight =
 react 自身的特色是极致的组件化，包括整个 react 生态也是如此，react 并没有做一系列的工具然后打包给大家使用，而是选择让社区共同合作，开发出一些低耦合的工具组合起来形成一个生态
 
 vue 提供的则是管家式的服务，整个生态中相对核心的工具我都给你造好，组合好，你拿来用就行了，不用操心太多事情
+
+我后来发现一个判断组件化做得好不好的方法是，一个项目的代码在你第一次看的时候，能不能在短时间内就能知道这块代码是干嘛的，组件化做得好的代码，你会很容易就能看懂，
+相反做得不好的代码，通常都是一堆代码从上往下，不仔细盯着看根本看不出来是干什么的
+
+特别是前端代码，好的命名，适度的抽象，都是让代码易读易维护的好办法
 `
 
 let javaScriptRecordNine = 
@@ -330,7 +341,11 @@ fetch 被称为下一代 AJAX 技术，采用 Promise 方式来处理数据，�
 `
 
 let javaScriptRecordTwelve = 
-`
+`# v-if and v-show
+
+v-if 是真正的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建
+
+v-show 不管初始条件是什么，元素总会被渲染，并且只是简单地基于 CSS 的 display 属性进行切换
 `
 
 let javaScriptRecordThirteen = 
@@ -347,6 +362,12 @@ bind 改变 this 指向后不会立即执行，而是返回一个永久改变 th
 apply 和 call 则是立即调用
 `
 
+let javaScriptRecordFourteen = 
+`# typescript 概述
+
+
+`
+
 let devEnvOne = 
 `# 命令行访问 GitHub 出现超时或 SSL 证书问题
 
@@ -358,6 +379,7 @@ let devEnvOne =
 blogRaw.set('折腾的快乐', firstBlogContent);
 blogRaw.set('得之我幸，失之我命', doSomething);
 blogRaw.set('为自己写传记', record);
+blogRaw.set('老鹤高飞，一枝投宿，长笑蜗牛戴屋行', recordTwo);
 blogRaw.set('flutter ---> 有时不显示图片', flutterBugOne);
 blogRaw.set('flutter ---> 打包后的 app 某些页面只显示一层灰色', flutterBugTwo);
 blogRaw.set('flutter ---> 缓存图片', flutterRecordOne);
@@ -375,7 +397,7 @@ blogRaw.set('javaScript ---> react 和 vue 对比', javaScriptRecordEight);
 blogRaw.set('javaScript ---> cookie、session，cookie、sessionStorage、localStorage', javaScriptRecordNine);
 blogRaw.set('javaScript ---> 宏观任务和微观任务', javaScriptRecordTen);
 blogRaw.set('javaScript ---> AJAX、axios、fetch', javaScriptRecordEleven);
-// blogRaw.set('javaScript ---> 堆、栈和队列', javaScriptRecordTwelve);
+blogRaw.set('javaScript ---> v-if and v-show', javaScriptRecordTwelve);
 blogRaw.set('javaScript ---> bind、call、apply', javaScriptRecordThirteen);
 blogRaw.set('javaScript ---> typeScript 概述', javaScriptRecordFourteen);
 blogRaw.set('devEnv ---> 命令行访问 GitHub 出现超时或 SSL 证书问题', devEnvOne);
