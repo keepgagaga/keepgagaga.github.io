@@ -376,6 +376,12 @@ let devEnvOne =
 解决方法是在 DNS 设置里加上 114.114.114.114 和 8.8.8.8 即可解决
 `
 
+let readOne = 
+`# 一蓑烟雨任平生，也无风雨也无晴
+
+
+`
+
 blogRaw.set('折腾的快乐', firstBlogContent);
 blogRaw.set('得之我幸，失之我命', doSomething);
 blogRaw.set('为自己写传记', record);
@@ -401,3 +407,4 @@ blogRaw.set('javaScript ---> v-if and v-show', javaScriptRecordTwelve);
 blogRaw.set('javaScript ---> bind、call、apply', javaScriptRecordThirteen);
 blogRaw.set('javaScript ---> typeScript 概述', javaScriptRecordFourteen);
 blogRaw.set('devEnv ---> 命令行访问 GitHub 出现超时或 SSL 证书问题', devEnvOne);
+blogRaw.set('read ---> 一蓑烟雨任平生，也无风雨也无晴', readOne);
