@@ -33,7 +33,7 @@ body:active::after {
    left: -999px;
 }
 body::after {
-    content: '你好啊，欢迎来这里逛逛~';
+    content: '⚽️';
     position: fixed;
     z-index: 999;
     left: calc(var(--clientx, -999) * 1px);

@@ -7,66 +7,15 @@
     <link rel="stylesheet" type="text/css" href="./public/assests/index.css">
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <canvas id="canvas"></canvas>
+    </div>
 <script>
-    let cardList = [
-        {text: 'Blog', href: './src/blog/index.html'},
-        // {text: 'React Page', href: './dist/react/index.html'}, 
-        {text: 'Search demo', href: './dist/vue/index.html'},
-        // {text: 'vue3 page', href: './dist/vue3/index.html'},
-        // {text: 'flutter web', href: './dist/flutter/index.html'},
-        // {text: 'Canvas自定义图表', href: './src/canvas/index.html'}, 
-        // {text: 'three.js', href: './src/threejs.html'},
-        // {text: 'CSS', href: './src/css/css.html'},
-        // {text: 'PDF edit', href: './src/pdf.html'},
-        // {text: 'p5.js', href: './src/p5js.html'},
-    ];
-
-    let root = document.getElementById('root');
-    let header = document.createElement('header');
-    // let h3 = document.createElement('h3');
-    // h3.innerText = "Saulzh's site ";
-    // h3.className = 'title';
-    // header.appendChild(h3);
-    root.appendChild(header);
-    let cardBlock = document.createElement('div');  
-    cardBlock.className = 'card-block';
-  
-    cardList.map(cardItem => {
-        let card = document.createElement('div');
-        let link = document.createElement('a');
-        card.className = 'card';
-        link.innerText = cardItem.text;
-        link.href = cardItem.href;
-        card.appendChild(link);
-        cardBlock.appendChild(card);
-    })
-
-    root.appendChild(cardBlock);
-
-    console.log(localStorage, 'localstorage ------------>');
-
-    //纸质背景，风车，转速随着鼠标移动而改变
-
-    document.addEventListener('mousedown', function(event) {
-        var target = event.target;
-        var body = document.body;
-        var html = document.documentElement;
-
-        body.style.setProperty('--pagex', event.pageX);
-        body.style.setProperty('--pagey', event.pageY);
-
-        html.style.setProperty('--clientx', event.clientX);
-        html.style.setProperty('--clienty', event.clientY);
-        html.style.setProperty('--scrolly', window.pageYOffset);
-
-        target.style.setProperty('--offsetx', event.offsetX);
-        target.style.setProperty('--offsety', event.offsetY);
-        target.parentElement.style.setProperty('--target-width', target.clientWidth);
-        target.parentElement.style.setProperty('--target-height', target.clientHeight);
-        target.parentElement.style.setProperty('--target-left', target.offsetLeft);
-        target.parentElement.style.setProperty('--target-top', target.offsetTop);
-    })
+</script>
+<script src="./src/modules/index.js"></script>
+<script type="module" src="./src/modules/snow.js">
+    import { DrawSnow } from './src/modules/snow.js'
+    DrawSnow(1000).init();
 </script>
 </body>
 </html>
