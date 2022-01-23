@@ -35,60 +35,69 @@
 
 <body>
     <pre>
-
-                       _oo0oo_
-                      o8888888o
-                      88" . "88
-                      (| -_- |)
-                      0\  =  /0
-                    ___/`---'\___
-                  .' \\|     | '.
-                 / \\|||  :  ||| \
-                / _||||| -:- |||||- \
-               |   | \\\  -  / |   |
-               | \_|  ''\---/''  |_/ |
-               \  .-\__  '-'  ___/-. /
-             ___'. .'  /--.--\  `. .'___
-          ."" '<  `.___\_<|>_/___.' >' "".
-         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
-         \  \ `_.   \_ __\ /__ _/   .-` /  /
-     =====`-.____`.___ \_____/___.-`___.-'=====
-                       `=---='
-
-
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-               佛祖保佑         永无BUG
+                  _oo0oo_
+                 o8888888o
+                 88" . "88
+                 (| -_- |)
+                 0\  =  /0
+               ___/`---'\___
+             .' \\|     | '.
+            / \\|||  :  ||| \
+           / _||||| -:- |||||- \
+          |   | \\\  -  / |   |
+          | \_|  ''\---/''  |_/ |
+          \  .-\__  '-'  ___/-. /
+        ___'. .'  /--.--\  `. .'___
+     ."" '<  `.___\_<|>_/___.' >' "".
+    | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+    \  \ `_.   \_ __\ /__ _/   .-` /  /
+=====`-.____`.___ \_____/___.-`___.-'=====
+                  `=---='
 
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+          佛祖保佑         永无BUG
 </pre>
-    <div>
+    <div class="row align-items-center">
         <button type="button" class="btn btn-success">阿弥陀佛</button>
     </div>
     <div id="konva"></div>
 
     <script>
+        var sw = 1000;
+        var sh = 1000;
+
         var stage = new Konva.Stage({
             container: 'konva',
-            width: 1000,
-            height: 1000,
+            width: sw,
+            height: sh,
         });
 
         var layer = new Konva.Layer();
 
-        var circle = new Konva.Circle({
-            x: stage.width() / 2,
-            y: stage.height() / 2,
-            radius: 70,
-            fill: 'red',
-            stroke: 'black',
-            strokeWidth: 4,
-        });
+        // var text = new Konva.Text({
+        //     x: stage.width() / 2,
+        //     y: stage.height() / 2,
+        //     text: '万事大吉',
+        //     fontSize: 20,
+        //     fill: '#FFC745',
+        // })
 
-        layer.add(circle);
-        // stage.add(layer);
-        // layer.draw();
+        for (let i = 0; i < 10; i++) {
+            var circle = new Konva.Circle({
+                x: sw * 0.50,
+                y: sh * 0.28,
+                radius: 20 * i + 50,
+                stroke: '#FFFBF2',
+                strokeWidth: 4,
+            });
+            layer.add(circle);
+        }
+
+        // layer.add(text);
+        stage.add(layer);
+        layer.draw();
     </script>
 </body>
 
