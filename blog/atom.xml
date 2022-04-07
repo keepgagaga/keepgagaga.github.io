@@ -4,13 +4,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cn">
     <title type="text">Sand Blog</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2022-04-07T23:23:17&#43;08:00</updated>
-    <id>https://example.com/</id>
-    <link rel="alternate" type="text/html" href="https://example.com/" />
-    <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
+    <updated>2022-04-07T23:51:11&#43;08:00</updated>
+    <id>/</id>
+    <link rel="alternate" type="text/html" href="/" />
+    <link rel="self" type="application/atom&#43;xml" href="/atom.xml" />
     <author>
             <name>Sand</name>
-            <uri>https://example.com/</uri>
+            <uri>/</uri>
             
                 <email>z@ruiruizhang.com</email>
             </author>
@@ -18,8 +18,8 @@
     <generator uri="https://gohugo.io/" version="0.88.1">Hugo</generator>
         <entry>
             <title type="text">开始记录</title>
-            <link rel="alternate" type="text/html" href="https://example.com/posts/first/" />
-            <id>https://example.com/posts/first/</id>
+            <link rel="alternate" type="text/html" href="/posts/first/" />
+            <id>/posts/first/</id>
             <updated>2022-04-07T22:56:33&#43;08:00</updated>
             <published>2022-04-07T22:36:08&#43;08:00</published>
             <author>

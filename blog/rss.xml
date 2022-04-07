@@ -8,7 +8,7 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Sand Blog</title>
-        <link>https://example.com/</link>
+        <link>/</link>
         <description>MemE is a powerful and highly customizable GoHugo theme for personal blogs.</description>
         <generator>Hugo 0.88.1 https://gohugo.io/</generator>
         
@@ -23,15 +23,15 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Thu, 07 Apr 2022 23:23:17 &#43;0800</lastBuildDate>
+        <lastBuildDate>Thu, 07 Apr 2022 23:51:11 &#43;0800</lastBuildDate>
         
-            <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
+            <atom:link rel="self" type="application/rss&#43;xml" href="/rss.xml" />
         
         
             <item>
                 <title>开始记录</title>
-                <link>https://example.com/posts/first/</link>
-                <guid isPermaLink="true">https://example.com/posts/first/</guid>
+                <link>/posts/first/</link>
+                <guid isPermaLink="true">/posts/first/</guid>
                 <pubDate>Thu, 07 Apr 2022 22:36:08 &#43;0800</pubDate>
                 
                     <author>z@ruiruizhang.com (Sand)</author>
