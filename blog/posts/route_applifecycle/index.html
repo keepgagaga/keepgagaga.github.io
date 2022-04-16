@@ -15,7 +15,7 @@
     
     <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    <title>开始记录 | Sand Blog</title>
+    <title>route and applifecycle | Sand Blog</title>
 
     <link rel="stylesheet" href="../../css/meme.min.21d090babe38ec6e5e83b6b1417c76df8072fac00bb8567a38d6830adc09ca44.css"/>
 
@@ -30,10 +30,11 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM&#43;Plex&#43;Serif:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;family=Comfortaa:wght@700&amp;display=swap" media="print" onload="this.media='all'" />
         <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM&#43;Plex&#43;Serif:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;family=Comfortaa:wght@700&amp;display=swap" /></noscript>
 
-    <meta name="author" content="Sand" /><meta name="description" content="博客最难的不是搭建，如今在博客模版&#43;GitHub的帮助下，搭建一个博客从未如此简单。
-困难的是写。算上从18年开始第一次折腾博客，到现在也三四年了，但真正写出来的文章屈指可数。
-我有点强迫症，经常会在一些小事情上纠结，比如GitHub账号名我已经修改了不下四五次了，博客模版也折腾好几个，都不太满意，从最早的rails搭建的博客，到express搭建的博客，再到博客模版&#43;GitHub Page，强迫症太难受了。
-好在如今终于明白，对于博客来说，最重要的是去记录，是留下自己过去的痕迹，让自己在三年五年之后还能回忆起当初是如何思考的，虽然有很大概率会觉得之前的想法很蠢，但却不失为一种独特的记忆，毕竟，如果今天能看到小学时候的日记，我想无论当初的记录多蠢，我们都会怀念吧。" />
+    <meta name="author" content="Sand" /><meta name="description" content="遇到一个一环扣一环的坑，真的是绝了。
+在做支付，支付完成后回到订单页面查询是否支付成功，然后更新总金额，但是遇到个诡异的事，成功获取总额后 setState 页面并没有更新总额，还是支付前的金额。
+一步步排查，金额获取到了，是对的，也执行了 setState，也重新 build 了页面，还是不行。
+就在看 build 部分的时候，突然发现热更新后也重新 build 了一次，而 setState 也会触发 build，但由于页面导航我在后面切换成了命名路由，于是接收页面参数的代码就放在了 build 方法里，然后这就会导致使用新的数据重新 build 时，前脚刚把数据更新成新的金额，后脚就在 build 时传入了路由带来的初始数据，于是页面的金额就怎么都不会改变了。
+解决方法就是把获取命名路由参数的步骤提到 initState 方法里，但直接放进去肯定会报错，因为这时候页面还没有绘制好，所以要用 Future.delayed(Duration.zero, () {}) 来包住，这样就可以了。" />
 
     <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon" />
     <link rel="mask-icon" href="../../icons/safari-pinned-tab.svg" color="#2a6df4" />
@@ -52,21 +53,21 @@
     
 
     
-    <link rel="canonical" href="../../posts/first/" />
+    <link rel="canonical" href="../../posts/route_applifecycle/" />
     
 
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "datePublished": "2022-04-07T22:36:08+08:00",
-        "dateModified": "2022-04-16T20:56:49+08:00",
-        "url": "/posts/first/",
-        "headline": "开始记录",
-        "description": "博客最难的不是搭建，如今在博客模版+GitHub的帮助下，搭建一个博客从未如此简单。\n困难的是写。算上从18年开始第一次折腾博客，到现在也三四年了，但真正写出来的文章屈指可数。\n我有点强迫症，经常会在一些小事情上纠结，比如GitHub账号名我已经修改了不下四五次了，博客模版也折腾好几个，都不太满意，从最早的rails搭建的博客，到express搭建的博客，再到博客模版+GitHub Page，强迫症太难受了。\n好在如今终于明白，对于博客来说，最重要的是去记录，是留下自己过去的痕迹，让自己在三年五年之后还能回忆起当初是如何思考的，虽然有很大概率会觉得之前的想法很蠢，但却不失为一种独特的记忆，毕竟，如果今天能看到小学时候的日记，我想无论当初的记录多蠢，我们都会怀念吧。",
+        "datePublished": "2022-04-16T20:54:20+08:00",
+        "dateModified": "2022-04-16T21:27:10+08:00",
+        "url": "/posts/route_applifecycle/",
+        "headline": "route and applifecycle",
+        "description": "遇到一个一环扣一环的坑，真的是绝了。\n在做支付，支付完成后回到订单页面查询是否支付成功，然后更新总金额，但是遇到个诡异的事，成功获取总额后 setState 页面并没有更新总额，还是支付前的金额。\n一步步排查，金额获取到了，是对的，也执行了 setState，也重新 build 了页面，还是不行。\n就在看 build 部分的时候，突然发现热更新后也重新 build 了一次，而 setState 也会触发 build，但由于页面导航我在后面切换成了命名路由，于是接收页面参数的代码就放在了 build 方法里，然后这就会导致使用新的数据重新 build 时，前脚刚把数据更新成新的金额，后脚就在 build 时传入了路由带来的初始数据，于是页面的金额就怎么都不会改变了。\n解决方法就是把获取命名路由参数的步骤提到 initState 方法里，但直接放进去肯定会报错，因为这时候页面还没有绘制好，所以要用 Future.delayed(Duration.zero, () {}) 来包住，这样就可以了。",
         "inLanguage" : "cn",
         "articleSection": "posts",
-        "wordCount":  5 ,
+        "wordCount":  29 ,
         "image": "/icons/apple-touch-icon.png",
         "author": {
             "@type": "Person",
@@ -102,17 +103,18 @@
 
 
 
-<meta property="og:title" content="开始记录" />
-<meta property="og:description" content="博客最难的不是搭建，如今在博客模版&#43;GitHub的帮助下，搭建一个博客从未如此简单。
-困难的是写。算上从18年开始第一次折腾博客，到现在也三四年了，但真正写出来的文章屈指可数。
-我有点强迫症，经常会在一些小事情上纠结，比如GitHub账号名我已经修改了不下四五次了，博客模版也折腾好几个，都不太满意，从最早的rails搭建的博客，到express搭建的博客，再到博客模版&#43;GitHub Page，强迫症太难受了。
-好在如今终于明白，对于博客来说，最重要的是去记录，是留下自己过去的痕迹，让自己在三年五年之后还能回忆起当初是如何思考的，虽然有很大概率会觉得之前的想法很蠢，但却不失为一种独特的记忆，毕竟，如果今天能看到小学时候的日记，我想无论当初的记录多蠢，我们都会怀念吧。" />
-<meta property="og:url" content="/posts/first/" />
+<meta property="og:title" content="route and applifecycle" />
+<meta property="og:description" content="遇到一个一环扣一环的坑，真的是绝了。
+在做支付，支付完成后回到订单页面查询是否支付成功，然后更新总金额，但是遇到个诡异的事，成功获取总额后 setState 页面并没有更新总额，还是支付前的金额。
+一步步排查，金额获取到了，是对的，也执行了 setState，也重新 build 了页面，还是不行。
+就在看 build 部分的时候，突然发现热更新后也重新 build 了一次，而 setState 也会触发 build，但由于页面导航我在后面切换成了命名路由，于是接收页面参数的代码就放在了 build 方法里，然后这就会导致使用新的数据重新 build 时，前脚刚把数据更新成新的金额，后脚就在 build 时传入了路由带来的初始数据，于是页面的金额就怎么都不会改变了。
+解决方法就是把获取命名路由参数的步骤提到 initState 方法里，但直接放进去肯定会报错，因为这时候页面还没有绘制好，所以要用 Future.delayed(Duration.zero, () {}) 来包住，这样就可以了。" />
+<meta property="og:url" content="/posts/route_applifecycle/" />
 <meta property="og:site_name" content="Sand Blog" />
 <meta property="og:locale" content="en" /><meta property="og:image" content="/icons/apple-touch-icon.png" />
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2022-04-07T22:36:08&#43;08:00" />
-    <meta property="article:modified_time" content="2022-04-16T20:56:49&#43;08:00" />
+    <meta property="article:published_time" content="2022-04-16T20:54:20&#43;08:00" />
+    <meta property="article:modified_time" content="2022-04-16T21:27:10&#43;08:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -229,7 +231,7 @@
 
         <article class="content post h-entry" data-small-caps="true" data-align="default" data-type="posts" data-toc-num="true">
 
-            <h1 class="post-title p-name">开始记录</h1>
+            <h1 class="post-title p-name">route and applifecycle</h1>
 
             
 
@@ -243,11 +245,11 @@
 <div class="post-meta">
     
         
-        <time datetime="2022-04-07T22:36:08&#43;08:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2022.4.7</time>
+        <time datetime="2022-04-16T20:54:20&#43;08:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2022.4.16</time>
     
     
         
-        <time datetime="2022-04-16T20:56:49&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2022.4.16</time>
+        <time datetime="2022-04-16T21:27:10&#43;08:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2022.4.16</time>
     
     
     
@@ -259,7 +261,7 @@
     
     
         
-        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;5</span>
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;29</span>
     
     
         
@@ -272,10 +274,11 @@
             
 
             <div class="post-body e-content">
-                <p style="text-indent:0"><span class="drop-cap">博</span>客最难的不是搭建，如今在博客模版+GitHub的帮助下，搭建一个博客从未如此简单。</p>
-<p>困难的是写。算上从18年开始第一次折腾博客，到现在也三四年了，但真正写出来的文章屈指可数。</p>
-<p>我有点强迫症，经常会在一些小事情上纠结，比如GitHub账号名我已经修改了不下四五次了，博客模版也折腾好几个，都不太满意，从最早的rails搭建的博客，到express搭建的博客，再到博客模版+GitHub Page，强迫症太难受了。</p>
-<p>好在如今终于明白，对于博客来说，最重要的是去记录，是留下自己过去的痕迹，让自己在三年五年之后还能回忆起当初是如何思考的，虽然有很大概率会觉得之前的想法很蠢，但却不失为一种独特的记忆，毕竟，如果今天能看到小学时候的日记，我想无论当初的记录多蠢，我们都会怀念吧。</p>
+                <p style="text-indent:0"><span class="drop-cap">遇</span>到一个一环扣一环的坑，真的是绝了。</p>
+<p>在做支付，支付完成后回到订单页面查询是否支付成功，然后更新总金额，但是遇到个诡异的事，成功获取总额后 setState 页面并没有更新总额，还是支付前的金额。</p>
+<p>一步步排查，金额获取到了，是对的，也执行了 setState，也重新 build 了页面，还是不行。</p>
+<p>就在看 build 部分的时候，突然发现热更新后也重新 build 了一次，而 setState 也会触发 build，但由于页面导航我在后面切换成了命名路由，于是接收页面参数的代码就放在了 build 方法里，然后这就会导致使用新的数据重新 build 时，前脚刚把数据更新成新的金额，后脚就在 build 时传入了路由带来的初始数据，于是页面的金额就怎么都不会改变了。</p>
+<p>解决方法就是把获取命名路由参数的步骤提到 initState 方法里，但直接放进去肯定会报错，因为这时候页面还没有绘制好，所以要用 Future.delayed(Duration.zero, () {}) 来包住，这样就可以了。</p>
 
             </div>
 
@@ -289,7 +292,7 @@
                 
                 
                 
-                <li class="copyright-item link"><span class="copyright-item-text">Link</span>: <a href="../../posts/first/" target="_blank" rel="noopener">/posts/first/</a></li>
+                <li class="copyright-item link"><span class="copyright-item-text">Link</span>: <a href="../../posts/route_applifecycle/" target="_blank" rel="noopener">/posts/route_applifecycle/</a></li>
             
             <li class="copyright-item license"><span class="copyright-item-text">License</span>: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></li>
             
@@ -304,7 +307,7 @@
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2022-04-16 20:56:49 CST" style="cursor:help">
+        <span title="Updated @ 2022-04-16 21:27:10 CST" style="cursor:help">
 
 <svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2022-04-16</text><text x="915" y="140" textLength="650" transform="scale(.1)">2022-04-16</text></g></svg>
         </span></div>
@@ -346,7 +349,7 @@
     var typeNumber = 0;
     var errorCorrectionLevel = 'L';
     var qr = qrcode(typeNumber, errorCorrectionLevel);
-    qr.addData('\/posts\/first\/');
+    qr.addData('\/posts\/route_applifecycle\/');
     qr.make();
     document.getElementById('qrcode-img').innerHTML = qr.createImgTag();
 </script>
@@ -388,10 +391,10 @@
     
         <ul class="post-nav">
             
-                <li class="post-nav-prev">
-                    <a href="../../posts/route_applifecycle/" rel="prev">&lt; route and applifecycle</a>
-                </li>
             
+                <li class="post-nav-next">
+                    <a href="../../posts/first/" rel="next">开始记录 &gt;</a>
+                </li>
             
         </ul>
     
