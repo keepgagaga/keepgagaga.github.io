@@ -8,6 +8,7 @@
     <title>Sand's site</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script src="https://unpkg.com/konva@8/konva.min.js"></script>
+    <script src="https://unpkg.com/css-doodle@0.27.4/css-doodle.min.js"></script>
     <style>
         .g-polygon {
             position: absolute;
@@ -57,7 +58,44 @@
         <div class="g-polygon g-polygon-2"></div>
         <div class="g-polygon g-polygon-3"></div>
     </div>
+    <css-doodle>
+        :doodle {
+            @grid: 1x8 / 100vmin;
+        }
+        @place-cell: center;
+        width: @rand(40vmin, 80vmin);
+        height: @rand(40vmin, 80vmin);
+        transform: translate(@rand(-200%, 200%), @rand(-60%, 60%)) scale(@rand(.8, 1.8)) skew(@rand(45deg));
+        clip-path: polygon(
+          @r(0, 30%) @r(0, 50%), 
+          @r(30%, 60%) @r(0%, 30%), 
+          @r(60%, 100%) @r(0%, 50%), 
+          @r(60%, 100%) @r(50%, 100%), 
+          @r(30%, 60%) @r(60%, 100%),
+          @r(0, 30%) @r(60%, 100%)
+        );
+        background: @pick(#f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #60569e, #e6437d, #ebbf4d, #00bcd4, #03a9f4, #2196f3, #009688, #5ee463, #f8e645, #ffc107, #ff5722, #43f8bf);
+        opacity: @rand(.3, .8);
+        position: relative;
+        top: @rand(-80%, 80%);
+        left: @rand(-80%, 80%);
+        animation: colorChange @rand(6.1s, 16.1s) infinite @rand(-.5s, -2.5s) linear alternate;
+      
+      @keyframes colorChange {
+        100% {
+          left: 0;
+          top: 0;
+          filter: hue-rotate(360deg);
+        }
+      }
+    </css-doodle>
     <script>
+        const doodle = document.querySelector('css-doodle');
+
+        document.addEventListener('click', function(e) {
+            doodle.update();
+        });
+
         // const width = window.innerWidth;
         // const height = window.innerHeight;
 
