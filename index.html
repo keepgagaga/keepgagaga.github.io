@@ -10,116 +10,132 @@
     <script src="https://unpkg.com/konva@8/konva.min.js"></script>
     <script src="https://unpkg.com/css-doodle@0.27.4/css-doodle.min.js"></script>
     <style>
-        .g-polygon {
-            position: absolute;
-            opacity: .5;
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            min-height: 100vh;
         }
-        .g-polygon-1 {
-            position: absolute;
-            left: 0;
-            bottom: 10vh;
-            width: 500px;
-            height: 500px;
-            background: #ffee55;
-            clip-path: polygon(0 10%, 30% 0, 100% 40%, 70% 100%, 20% 90%);
+
+        @media screen and (max-width: 900px) {
+            body>css-doodle {
+                width: 20vh;
+                height: 20vh;
+            }
         }
-        .g-polygon-2 {
-            position: absolute;
-            left: 35vw;
-            bottom: 10vh;
-            width: 500px;
-            height: 500px;
-            background: #E950D1;
-            clip-path: polygon(10% 0, 100% 70%, 100% 100%, 20% 90%);
-        }
-        .g-polygon-3 {
-            position: absolute;
-            right: 0;
-            bottom: 10vh;
-            width: 500px;
-            height: 500px;
-            background: rgba(87, 80, 233);
-            clip-path: polygon(80% 0, 100% 70%, 100% 100%, 20% 90%);
-        }
-        .g-bg::before {
-            content: "";
-            position: fixed;
-            top: 0;left: 0;bottom: 0;right: 0;
-            backdrop-filter: blur(150px);
-            z-index: 1;
+
+        @media screen and (min-width: 900px) {
+            body>css-doodle {
+                width: 20vw;
+                height: 20vw;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- <div id="container"></div> -->
-    <div class="g-bg">
-        <div class="g-polygon g-polygon-1"></div>
-        <div class="g-polygon g-polygon-2"></div>
-        <div class="g-polygon g-polygon-3"></div>
-    </div>
-    <css-doodle>
+
+    <css-doodle id="circle">
         :doodle {
-            @grid: 1x8 / 100vmin;
+        @grid: 8 / 90%;
+        @shape: circle;
         }
-        @place-cell: center;
-        width: @rand(40vmin, 80vmin);
-        height: @rand(40vmin, 80vmin);
-        transform: translate(@rand(-200%, 200%), @rand(-60%, 60%)) scale(@rand(.8, 1.8)) skew(@rand(45deg));
-        clip-path: polygon(
-          @r(0, 30%) @r(0, 50%), 
-          @r(30%, 60%) @r(0%, 30%), 
-          @r(60%, 100%) @r(0%, 50%), 
-          @r(60%, 100%) @r(50%, 100%), 
-          @r(30%, 60%) @r(60%, 100%),
-          @r(0, 30%) @r(60%, 100%)
+
+        transition: .2s @r(.6s);
+        border-radius: @pick(100% 0, 0 100%);
+        transform: scale(@r(.25, 1.25));
+
+        background: hsla(
+        calc(240 - 6 * @x * @y),
+        70%, 68%, @r.8
         );
-        background: @pick(#f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #60569e, #e6437d, #ebbf4d, #00bcd4, #03a9f4, #2196f3, #009688, #5ee463, #f8e645, #ffc107, #ff5722, #43f8bf);
-        opacity: @rand(.3, .8);
-        position: relative;
-        top: @rand(-80%, 80%);
-        left: @rand(-80%, 80%);
-        animation: colorChange @rand(6.1s, 16.1s) infinite @rand(-.5s, -2.5s) linear alternate;
-      
-      @keyframes colorChange {
-        100% {
-          left: 0;
-          top: 0;
-          filter: hue-rotate(360deg);
-        }
-      }
     </css-doodle>
+
+    <css-doodle>
+        @grid: 50x1 / 100%;
+
+        @position: center;
+        @size: calc(75% / @I * @i);
+
+        transform: rotate(calc(@i * 5deg));
+
+        border-radius: 30%;
+        border: 1px solid hsla(
+        calc(10 + 4 * @i), 70%, 68%, @r.8
+        );
+    </css-doodle>
+
+    <css-doodle>
+        @grid: 1x10 / 85%;
+
+        @position: center;
+        @size: calc(@i * 10%);
+
+        border-radius: 50%;
+        border-style: dashed;
+        border-width: calc(@i * 4px);
+        border-color: hsla(
+        calc(20 * @i), 70%, 68%,
+        calc(3 / @i * .8)
+        );
+
+        transform: rotate(@r(360deg));
+    </css-doodle>
+
+    <css-doodle>
+        @grid: 16 / 320px;
+
+        @size: 1px calc(141.4% + 1px);
+        transform: rotate(@p(±45deg));
+        background: #AEACFB;
+        margin: auto;
+    </css-doodle>
+
+    <css-doodle>
+        @grid: 14 / 80%;
+
+        @random {
+        border-left: 1px solid #5d81bc;
+        }
+        @random {
+        border-top: 1px solid #5d81bc;
+        }
+        @random(.25) {
+        background: linear-gradient(
+        @p(#fff, tan, #5d81bc), @lp
+        )
+        50% / @r(60%) @lr
+        no-repeat;
+        }
+        @random {
+        filter: drop-shadow(0 0 10px #fff);
+        }
+    </css-doodle>
+
+    <css-doodle>
+        @grid: 1 / 70%;
+
+        background: radial-gradient(
+        yellow, #E91F63, #fff
+        );
+
+        clip-path: @shape(
+        fill-rule: evenodd;
+        split: 500;
+        scale: .6;
+        r: cos(7t)^2 + sin(7t) + .3;
+        );
+    </css-doodle>
+
+
+
     <script>
-        const doodle = document.querySelector('css-doodle');
+        const circle = document.getElementById('circle');
 
-        document.addEventListener('click', function(e) {
-            doodle.update();
+        circle.addEventListener('click', function (e) {
+            circle.update();
         });
-
-        // const width = window.innerWidth;
-        // const height = window.innerHeight;
-
-        // const stage = new Konva.Stage({
-        //     container: 'container',
-        //     width: width,
-        //     height: height,
-        // });
-
-        // const layer = new Konva.Layer();
-
-        // const rect = new Konva.Rect({
-        //     x: 20,
-        //     y: 20,
-        //     width: 100,
-        //     height: 50,
-        //     fill: 'green',
-        //     stroke: 'black',
-        //     strokeWidth: 4,
-        // });
-
-        // layer.add(rect);
-
-        // stage.add(layer);
     </script>
 </body>
 
