@@ -52,7 +52,7 @@
         );
     </css-doodle>
 
-    <css-doodle>
+    <css-doodle id="ripple">
         @grid: 50x1 / 100%;
 
         @position: center;
@@ -66,7 +66,7 @@
         );
     </css-doodle>
 
-    <css-doodle>
+    <css-doodle id="dashed">
         @grid: 1x10 / 85%;
 
         @position: center;
@@ -83,7 +83,7 @@
         transform: rotate(@r(360deg));
     </css-doodle>
 
-    <css-doodle>
+    <css-doodle id="maze">
         @grid: 16 / 320px;
 
         @size: 1px calc(141.4% + 1px);
@@ -92,7 +92,7 @@
         margin: auto;
     </css-doodle>
 
-    <css-doodle>
+    <css-doodle id="maze-plus">
         @grid: 14 / 80%;
 
         @random {
@@ -113,7 +113,7 @@
         }
     </css-doodle>
 
-    <css-doodle>
+    <css-doodle id="flower">
         @grid: 1 / 70%;
 
         background: radial-gradient(
@@ -128,13 +128,13 @@
         );
     </css-doodle>
 
-
-
     <script>
-        const circle = document.getElementById('circle');
-
-        circle.addEventListener('click', function (e) {
-            circle.update();
+        const doodles = ['circle', 'ripple', 'dashed', 'maze', 'maze-plus', 'flower'];
+        doodles.forEach(doodle => {
+            const el = document.getElementById(doodle);
+            el.addEventListener('click', () => {
+                el.update();
+            });
         });
     </script>
 </body>
